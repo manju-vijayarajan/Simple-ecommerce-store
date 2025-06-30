@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Listings</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+    }
+
+    .container {
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-name {
+      font-size: 1.1em;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1em;
+      color: #4CAF50;
+      margin-bottom: 15px;
+    }
+
+    .view-link {
+      text-decoration: none;
+      color: white;
+      background-color: #4CAF50;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+
+    .view-link:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    Welcome <%= user || 'Guest' %>
+  </header>
+
+  <div class="container">
+    <% products.forEach(p => { %>
+      <div class="product-card">
+        <div class="product-name"><%= p.name %></div>
+        <div class="price">₹<%= p.price %></div>
+        <a class="view-link" href="/products/<%= p._id %>">View Details</a>
+      </div>
+    <% }) %>
+  </div>
+
+</body>
+</html>
